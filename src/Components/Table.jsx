@@ -2,30 +2,41 @@ import { Component } from "react";
 import TableRow from "./TableRow";
 
 export default function Table(props) {
-    
+
     if (props.list.length === 0) {
-            return
+        return
     }
-    const rows = props.list.map((text, index) => {       
+    const rows = props.list.map((text, index) => {        
         return (
-            <table>
-                <tr>
-                    <th>N</th>
-                    <th>Task</th>
-                    <th>Action</th>
-                </tr>
-                < TableRow 
-                number= {index+1}
-                text = {text.massage}
-                />
-            </table>
+
+
+            < TableRow
+                key={text.id ?? index}
+                number={index + 1}
+                text={text.masage}
+                handleDeleat={props.handleDeleat}
+                handleUpdate = {props.handleUpdate}
+            />
         )
 
     })
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {rows}
+            <table>
+                <thead>
+                    <tr>
+                        <th>N</th>
+                        <th>Task</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {rows}
+                </tbody>
+
+            </table>
         </div>
 
     )

@@ -7,18 +7,16 @@ export default class WriteBox extends Component {
             input: ''
         }
         this.handelAdd = this.handelAdd.bind(this)
-        this.handelChange = this.handelChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handelAdd() {
-     
-        console.log(this.state.input);
-        if (input.trim() === "") return; // avoid empty entry
+        if (this.state.input.trim() === "") return; // avoid empty entry
         this.props.handleAdd(this.state.input);
         this.setState({ input: "" });
     }
 
-    handelChange = (e) => {
+    handleChange = (e) => {
         
         this.setState({
             input: e.target.value

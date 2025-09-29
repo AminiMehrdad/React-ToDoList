@@ -41,13 +41,15 @@ export default class CleanList extends Component {
     }
 
     handleDeleat(number) {
+        
         this.setState(state => {
-            state.list = state.list
+            const newList = state.list
                 .filter(item => item.number !== number)
                 .map((item, index) => {
                     return { ...item, number: index + 1 };
                 });
-        })
+            return { list: newList }; // Return new state to trigger update
+        });
     }
 
     render() {
@@ -61,6 +63,9 @@ export default class CleanList extends Component {
                 <br /><br />
                 <Table 
                     list= {this.state.list}
+                    handleDeleat = {this.handleDeleat}
+                    handleUpdate = {this.handleUpdate}
+
                 />
             </div>
         )
